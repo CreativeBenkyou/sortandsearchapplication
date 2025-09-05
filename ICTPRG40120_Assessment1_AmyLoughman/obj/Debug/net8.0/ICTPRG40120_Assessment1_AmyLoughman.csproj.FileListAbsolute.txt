@@ -12,3 +12,4 @@ C:\Users\saiai\source\repos\ICTPRG40120_Assessment1_AmyLoughman\ICTPRG40120_Asse
 C:\Users\saiai\source\repos\ICTPRG40120_Assessment1_AmyLoughman\ICTPRG40120_Assessment1_AmyLoughman\obj\Debug\net8.0\ICTPRG40120_Assessment1_AmyLoughman.pdb
 C:\Users\saiai\source\repos\ICTPRG40120_Assessment1_AmyLoughman\ICTPRG40120_Assessment1_AmyLoughman\obj\Debug\net8.0\ICTPRG40120_Assessment1_AmyLoughman.genruntimeconfig.cache
 C:\Users\saiai\source\repos\ICTPRG40120_Assessment1_AmyLoughman\ICTPRG40120_Assessment1_AmyLoughman\obj\Debug\net8.0\ref\ICTPRG40120_Assessment1_AmyLoughman.dll
+C:\Users\saiai\source\repos\ICTPRG40120_Assessment1_AmyLoughman\ICTPRG40120_Assessment1_AmyLoughman\obj\Debug\net8.0\ICTPRG40120_Assessment1_AmyLoughman.sourcelink.json

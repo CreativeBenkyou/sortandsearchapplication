@@ -19,33 +19,78 @@ Console.WriteLine(@"
 // Default amountOfNumbers & rangeOfNumbers in case scope is broken
 int amountOfNumbers = 4;
 int rangeOfNumbers = 10;
+int userValues = 0;
 
 // Take input for amountOfNumbers (line 11)
-Console.WriteLine("Please input how many numbers you would like on your lottery ticket? ");
-string amountOfNumbersString = Console.ReadLine();
-if (int.TryParse(amountOfNumbersString, out int amountOfNumbersInt))
+bool amountOfNumbersBool = true;
+
+while (amountOfNumbersBool == true)
 {
-    amountOfNumbers = amountOfNumbersInt;
-    // Debug: Is the number being recorded?
-    // Console.WriteLine(amountOfNumbers);
-}
-else
-{
-    Console.WriteLine("Please enter a number. (This is how may numbers you would like on your lottery ticket - Example: 5) ");
+    Console.WriteLine(@"
+Please input how many numbers you would like on your lottery ticket?
+");
+    string amountOfNumbersString = Console.ReadLine();
+    if (int.TryParse(amountOfNumbersString, out int amountOfNumbersInt))
+    {
+        amountOfNumbers = amountOfNumbersInt;
+        if (amountOfNumbers == 0)
+        {
+            Console.WriteLine(@"
+Please enter a number, it can't be 0 ");
+        }
+        else if (amountOfNumbers > 100)
+        {
+            Console.WriteLine(@"
+Please enter a number between 1 and 100 ");
+        }
+        else
+        {
+            amountOfNumbersBool = false;
+        }
+            // Debug: Is the number being recorded?
+            // Console.WriteLine(amountOfNumbers);
+    }
+    else
+    {
+        Console.WriteLine(@"
+Please enter a number. (This is how may numbers you would like on your lottery ticket - Example: 5) ");
+    }
 }
 
 // Take input for rangeOfNumbers (line 12)
-Console.WriteLine("Please input how the range of numbers you would like? ");
-string rangeOfNumbersString = Console.ReadLine();
-if (int.TryParse(rangeOfNumbersString, out int rangeOfNumbersInt))
+bool rangeOfNumbersBool = true;
+
+while (rangeOfNumbersBool == true)
 {
-    rangeOfNumbers = rangeOfNumbersInt;
-    // Debug: Is the range being recorded?
-    // Console.WriteLine(rangeOfNumbers);
-}
-else
-{
-    Console.WriteLine("Please enter a number. (This is the range of numbers you would like on your lottery ticket - Example: 40) ");
+    Console.WriteLine(@"
+Please input the range of numbers you would like on your lottery ticket:
+");
+    string rangeOfNumbersString = Console.ReadLine();
+    if (int.TryParse(rangeOfNumbersString, out int rangeOfNumbersInt))
+    {
+        rangeOfNumbers = rangeOfNumbersInt;
+        if (rangeOfNumbers == 0)
+        {
+            Console.WriteLine(@"
+Please enter a number, it can't be 0 ");
+        }
+        else if (rangeOfNumbers > 100)
+        {
+            Console.WriteLine(@"
+Please enter a number between 1 and 100 ");
+        }
+        else
+        {
+            rangeOfNumbersBool = false;
+        }
+        // Debug: Is the number being recorded?
+        // Console.WriteLine(rangeOfNumbers);
+    }
+    else
+    {
+        Console.WriteLine(@"
+Please enter a number. (This is the range of numbers you would like on your lottery ticket - Example: 5) ");
+    }
 }
 
 Console.WriteLine($@"
@@ -54,10 +99,8 @@ Console.WriteLine($@"
     From a range of 1-{rangeOfNumbers}
     Have fun!
     ");
-    
 
-// Take input for arrayUserValues (user inputs numbers to compare to random numbers in arrayRandom)
-
+// Take input for userValuesArray (user inputs numbers to compare to random numbers in randomArray)
 
 
 // Make sure length of arrayUserValues is the same as amountOfNumbers
