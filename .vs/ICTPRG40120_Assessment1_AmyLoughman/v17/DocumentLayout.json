@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\saiai\\source\\repos\\ICTPRG40120_Assessment1_AmyLoughman\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FE29B219-5C20-4DDA-B5F2-2E83346BA076}|ICTPRG40120_Assessment1_AmyLoughman\\ICTPRG40120_Assessment1_AmyLoughman.csproj|c:\\users\\saiai\\source\\repos\\ictprg40120_assessment1_amyloughman\\ictprg40120_assessment1_amyloughman\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE29B219-5C20-4DDA-B5F2-2E83346BA076}|ICTPRG40120_Assessment1_AmyLoughman\\ICTPRG40120_Assessment1_AmyLoughman.csproj|solutionrelative:ictprg40120_assessment1_amyloughman\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\saiai\\source\\repos\\ICTPRG40120_Assessment1_AmyLoughman\\ICTPRG40120_Assessment1_AmyLoughman\\Program.cs",
+              "RelativeDocumentMoniker": "ICTPRG40120_Assessment1_AmyLoughman\\Program.cs",
+              "ToolTip": "C:\\Users\\saiai\\source\\repos\\ICTPRG40120_Assessment1_AmyLoughman\\ICTPRG40120_Assessment1_AmyLoughman\\Program.cs",
+              "RelativeToolTip": "ICTPRG40120_Assessment1_AmyLoughman\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T01:10:26.855Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
