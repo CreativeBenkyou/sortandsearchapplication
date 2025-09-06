@@ -3,6 +3,7 @@
 // ICT40120: ICTPRG433 & ICTPRG440
 // Assessment 1: Sort and Search Application - Lottery
 
+using System.Linq.Expressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 Console.WriteLine(@"
@@ -161,13 +162,34 @@ Random randomLotteryValues = new Random();
 int[] randomValuesArray = new int[amountOfNumbers];
 for (int number = 0; number < randomValuesArray.Length; number++)
 {
+    // Use rangeOfNumbers and amountOfNumbers to determine how many numbers and range of numbers
+    //     To enter into the randomValuesArray
     randomValuesArray[number] = randomLotteryValues.Next(1, rangeOfNumbers);
 }
 
 // Debug: Have random values been added to the randomValuesArray array?
 Console.WriteLine($"\n\nDebug Random Array: \n\n{string.Join("\n\n", randomValuesArray)}", "\n");
 
-// Use rangeOfNumbers and amountOfNumbers to determine how many numbers and range of numbers
-//     To enter into the randomValuesArray
 // Compare randomValuesArray to arrayUserValues
-//      Bubble search and Linear search
+//      Binary search and Linear search
+int LinearLotterySearch(int[] arrayBeingSearched, int valueBeingFound)
+{
+    for (int i = 0; i < arrayBeingSearched.Length; ++i)
+    {
+        if (arrayBeingSearched[i] == valueBeingFound)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+// Call the Linear search on the randomValuesArray
+//      Checking over each element from userValuesArray to see if the element is an element in randomValuesArray
+foreach (int element in userValuesArray)
+{
+    Console.WriteLine(LinearLotterySearch(randomValuesArray, element));
+    // Debug: Is it iterating over the array?
+    Console.WriteLine("Yes");
+}
