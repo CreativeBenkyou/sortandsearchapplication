@@ -24,13 +24,13 @@ int amountOfNumbers = 4;
 int rangeOfNumbers = 10;
 int userValues = 0;
 
-// Take input for amountOfNumbers (line 11)
+// amountofNumbers
+// Take input for amountOfNumbers
 bool amountOfNumbersBool = true;
-
 while (amountOfNumbersBool == true)
 {
     Console.WriteLine(@"
-Please input how many numbers you would like on your lottery ticket?
+Please input how many numbers you would like on your lottery ticket:
 ");
     string amountOfNumbersString = Console.ReadLine();
     // Conversion from string to int: amountOfNumbers
@@ -61,7 +61,8 @@ Please enter a number. (This is how may numbers you would like on your lottery t
     }
 }
 
-// Take input for rangeOfNumbers (line 12)
+// rangeOfNumbers
+// Take input for rangeOfNumbers
 bool rangeOfNumbersBool = true;
 
 while (rangeOfNumbersBool == true)
@@ -98,31 +99,53 @@ Please enter a number. (This is the range of numbers you would like on your lott
     }
 }
 
-Console.WriteLine($@"
-    Hello and welcome to the Lottery Game!
-    You will be playing {amountOfNumbers} numbers
-    From a range of 1-{rangeOfNumbers}
-    Have fun!
-    ");
+if (amountOfNumbers == 1)
+{
+    Console.WriteLine($@"
+        Hello and welcome to the Lottery Game!
+        You will be playing {amountOfNumbers} number
+        From a range of 1-{rangeOfNumbers}
+        Have fun!
+        ");
 
+    Console.WriteLine($@"
+    Please input your numbers you would like on your lottery ticket!
+    (Please enter 1 number at a time)
+    Please choose {amountOfNumbers} number, in the range of 1-{rangeOfNumbers}:
+    ");
+}
+else
+{
+    Console.WriteLine($@"
+        Hello and welcome to the Lottery Game!
+        You will be playing {amountOfNumbers} numbers
+        From a range of 1-{rangeOfNumbers}
+        Have fun!
+        ");
+
+        Console.WriteLine($@"
+    Please input your numbers you would like on your lottery ticket!
+    (Please enter 1 number at a time)
+    Please choose {amountOfNumbers} numbers, in the range of 1-{rangeOfNumbers}:
+    ");
+}
+
+// userValuesArray
+int counterForAmountOfNumbersLeftToBeEnteredByUser = amountOfNumbers;
 // Take input for userValuesArray (user inputs numbers to compare to random numbers in randomValuesArray)
 int[] userValuesArray = new int[amountOfNumbers];
 // Make sure length of arrayUserValues is the same as amountOfNumbers
 // Make sure range of numbers of arrayUserValues is the same as rangeOfNumbers
-// Conversion from string to int: amountOfNumbers, rangeOfNumbers, userValues
+// Conversion from string to int: userValues
 for (int number = 0; number < userValuesArray.Length; number++)
 {
     // Debug: is each number getting iterated over in userValuesArray?
     //Console.WriteLine($"Debug: Number {userValuesArray[number]}");
-
-
     bool userValuesArrayBool = true;
-
     while (userValuesArrayBool == true)
     {
-        Console.WriteLine($@"
-Please input your numbers you would like on your lottery ticket! Please choose {amountOfNumbers} numbers, in the range of 1-{rangeOfNumbers}:
-");
+        Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Console.WriteLine("\nEnter a number: \n");
         string userValuesArrayString = Console.ReadLine();
         if (int.TryParse(userValuesArrayString, out int userValuesArrayInt))
         {
@@ -130,15 +153,17 @@ Please input your numbers you would like on your lottery ticket! Please choose {
             if (userValuesArrayInt == 0)
             {
                 Console.WriteLine(@"
-Please enter a number, it can't be 0 ");
+Please enter a single number, it can't be 0 ");
             }
             else if (userValuesArrayInt > rangeOfNumbers)
             {
                 Console.WriteLine($@"
-Please enter a number between 1 and {rangeOfNumbers} ");
+Please enter a single number between 1 and {rangeOfNumbers} ");
             }
             else
             {
+                counterForAmountOfNumbersLeftToBeEnteredByUser--;
+                Console.WriteLine($"\nThere is {counterForAmountOfNumbersLeftToBeEnteredByUser} left to choose!");
                 userValuesArrayBool = false;
             }
             // Debug: Is the number being recorded?
@@ -147,7 +172,7 @@ Please enter a number between 1 and {rangeOfNumbers} ");
         else
         {
             Console.WriteLine(@"
-Please enter a number. (This is the range of numbers you would like on your lottery ticket - Example: 5) ");
+Please enter a single number. (This is the range of numbers you would like on your lottery ticket - Example: 5) ");
         }
     }
 }
@@ -182,7 +207,6 @@ int LinearLotterySearch(int[] arrayBeingSearched, int valueBeingFound)
             return i;
         }
     }
-
     return -1;
 }
 
@@ -199,14 +223,25 @@ foreach (int element in userValuesArray)
     //Console.WriteLine("Yes");
 }
 
-Console.WriteLine($"Your lottery ticket says: {string.Join("", userValuesArray)}", "\n");
-Console.WriteLine($"The **winning** lottery ticket says: {string.Join("", randomValuesArray)}", "\n");
+Console.WriteLine(@"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+");
+Console.WriteLine($"Your lottery ticket says:\n\n{string.Join("-", userValuesArray)}", "\n");
+Console.WriteLine($"\nThe **winning** lottery ticket says:\n\n{string.Join("-", randomValuesArray)}", "\n");
 
 if (userWon)
 {
+    Console.WriteLine(@"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     Console.WriteLine("You won!");
 }
 else
 {
-    Console.WriteLine("Too bad!");
+    Console.WriteLine("\nToo bad!");
 }
+Console.WriteLine(@"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+Console.WriteLine("\nThanks for playing!\n");
