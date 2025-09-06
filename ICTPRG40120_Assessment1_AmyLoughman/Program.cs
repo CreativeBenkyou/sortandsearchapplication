@@ -3,6 +3,8 @@
 // ICT40120: ICTPRG433 & ICTPRG440
 // Assessment 1: Sort and Search Application - Lottery
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 Console.WriteLine(@"
     This is a program for making customisable Lottery games.
     You can customise the games by selecting the range of numbers and total amount of numbers.
@@ -100,8 +102,55 @@ Console.WriteLine($@"
     Have fun!
     ");
 
-// Take input for userValuesArray (user inputs numbers to compare to random numbers in randomArray)
+// Write a function for taking the inputs amountOfNumbers and rangeOfNumbers
+// Checking whether it is not 0, whether it is under 100, if it is not a char/string (giving each case a custom feedback and not generic "Use only numbers")
+// (Otherwise the game will never end if you can choose more than 100 numbers, in the range of more than 100 numbers)
 
+// Take input for userValuesArray (user inputs numbers to compare to random numbers in randomArray)
+int[] userValuesArray = new int[amountOfNumbers];
+for (int number = 0; number < userValuesArray.Length; number++)
+{
+    // Debug: is each number getting iterated over in userValuesArray?
+    Console.WriteLine($"Number {userValuesArray[number]}");
+
+
+    bool userValuesArrayBool = true;
+
+    while (userValuesArrayBool == true)
+    {
+        Console.WriteLine($@"
+Please input your numbers you would like on your lottery ticket! Please choose {amountOfNumbers} numbers, in the range of 1-{rangeOfNumbers}:
+");
+        string userValuesArrayString = Console.ReadLine();
+        if (int.TryParse(userValuesArrayString, out int userValuesArrayInt))
+        {
+            userValuesArray[userValuesArrayInt] = userValuesArrayInt;
+            if (userValuesArrayInt == 0)
+            {
+                Console.WriteLine(@"
+Please enter a number, it can't be 0 ");
+            }
+            else if (userValuesArrayInt <= rangeOfNumbers)
+            {
+                Console.WriteLine($@"
+Please enter a number between 1 and {rangeOfNumbers} ");
+            }
+            else
+            {
+                userValuesArrayBool = false;
+            }
+            // Debug: Is the number being recorded?
+            // Console.WriteLine(rangeOfNumbers);
+        }
+        else
+        {
+            Console.WriteLine(@"
+Please enter a number. (This is the range of numbers you would like on your lottery ticket - Example: 5) ");
+        }
+    }
+
+
+}
 
 // Make sure length of arrayUserValues is the same as amountOfNumbers
 // Make sure range of numbers of arrayUserValues is the same as rangeOfNumbers
