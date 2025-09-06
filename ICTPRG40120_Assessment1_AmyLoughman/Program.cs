@@ -52,7 +52,7 @@ Please enter a number between 1 and 100 ");
             amountOfNumbersBool = false;
         }
             // Debug: Is the number being recorded?
-            // Console.WriteLine(amountOfNumbers);
+            //Console.WriteLine(amountOfNumbers);
     }
     else
     {
@@ -89,7 +89,7 @@ Please enter a number between 1 and 100 ");
             rangeOfNumbersBool = false;
         }
         // Debug: Is the number being recorded?
-        // Console.WriteLine($"Debug: {rangeOfNumbers}");
+        //Console.WriteLine($"Debug: {rangeOfNumbers}");
     }
     else
     {
@@ -113,7 +113,7 @@ int[] userValuesArray = new int[amountOfNumbers];
 for (int number = 0; number < userValuesArray.Length; number++)
 {
     // Debug: is each number getting iterated over in userValuesArray?
-    // Console.WriteLine($"Debug: Number {userValuesArray[number]}");
+    //Console.WriteLine($"Debug: Number {userValuesArray[number]}");
 
 
     bool userValuesArrayBool = true;
@@ -142,7 +142,7 @@ Please enter a number between 1 and {rangeOfNumbers} ");
                 userValuesArrayBool = false;
             }
             // Debug: Is the number being recorded?
-            // Console.WriteLine(rangeOfNumbers);
+            //Console.WriteLine(rangeOfNumbers);
         }
         else
         {
@@ -151,9 +151,10 @@ Please enter a number. (This is the range of numbers you would like on your lott
         }
     }
 }
-
+// Debug: Break point for checking userValuesArray & screenshot
+//Console.WriteLine();
 // Debug: Have user values been added to the userValuesArray array?
-Console.WriteLine($"\n\nDebug User Array: \n\n{string.Join("\n\n", userValuesArray)}", "\n");
+//Console.WriteLine($"\n\nDebug User Array: \n\n{string.Join("\n\n", userValuesArray)}", "\n");
 
 // Import random
 Random randomLotteryValues = new Random();
@@ -168,7 +169,7 @@ for (int number = 0; number < randomValuesArray.Length; number++)
 }
 
 // Debug: Have random values been added to the randomValuesArray array?
-Console.WriteLine($"\n\nDebug Random Array: \n\n{string.Join("\n\n", randomValuesArray)}", "\n");
+//Console.WriteLine($"\n\nDebug Random Array: \n\n{string.Join("\n\n", randomValuesArray)}", "\n");
 
 // Compare randomValuesArray to arrayUserValues
 //      Binary search and Linear search
@@ -187,9 +188,25 @@ int LinearLotterySearch(int[] arrayBeingSearched, int valueBeingFound)
 
 // Call the Linear search on the randomValuesArray
 //      Checking over each element from userValuesArray to see if the element is an element in randomValuesArray
+bool userWon = true;
 foreach (int element in userValuesArray)
 {
-    Console.WriteLine(LinearLotterySearch(randomValuesArray, element));
+    if (LinearLotterySearch(randomValuesArray, element) == -1)
+    {
+        userWon = false;
+    }
     // Debug: Is it iterating over the array?
-    Console.WriteLine("Yes");
+    //Console.WriteLine("Yes");
+}
+
+Console.WriteLine($"Your lottery ticket says: {string.Join("", userValuesArray)}", "\n");
+Console.WriteLine($"The **winning** lottery ticket says: {string.Join("", randomValuesArray)}", "\n");
+
+if (userWon)
+{
+    Console.WriteLine("You won!");
+}
+else
+{
+    Console.WriteLine("Too bad!");
 }
