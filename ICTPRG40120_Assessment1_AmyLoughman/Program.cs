@@ -111,7 +111,7 @@ int[] userValuesArray = new int[amountOfNumbers];
 for (int number = 0; number < userValuesArray.Length; number++)
 {
     // Debug: is each number getting iterated over in userValuesArray?
-    Console.WriteLine($"Number {userValuesArray[number]}");
+    Console.WriteLine($"Debug: Number {userValuesArray[number]}");
 
 
     bool userValuesArrayBool = true;
@@ -124,13 +124,13 @@ Please input your numbers you would like on your lottery ticket! Please choose {
         string userValuesArrayString = Console.ReadLine();
         if (int.TryParse(userValuesArrayString, out int userValuesArrayInt))
         {
-            userValuesArray[userValuesArrayInt] = userValuesArrayInt;
+            userValuesArray[number] = userValuesArrayInt;
             if (userValuesArrayInt == 0)
             {
                 Console.WriteLine(@"
 Please enter a number, it can't be 0 ");
             }
-            else if (userValuesArrayInt <= rangeOfNumbers)
+            else if (userValuesArrayInt > rangeOfNumbers)
             {
                 Console.WriteLine($@"
 Please enter a number between 1 and {rangeOfNumbers} ");
@@ -148,13 +148,10 @@ Please enter a number between 1 and {rangeOfNumbers} ");
 Please enter a number. (This is the range of numbers you would like on your lottery ticket - Example: 5) ");
         }
     }
-
-
 }
 
 // Make sure length of arrayUserValues is the same as amountOfNumbers
 // Make sure range of numbers of arrayUserValues is the same as rangeOfNumbers
-
 // Conversion from input userValues to arrayUserValues
 // Conversion from string to int: amountOfNumbers, rangeOfNumbers, userValues
 // Import random
@@ -162,4 +159,4 @@ Please enter a number. (This is the range of numbers you would like on your lott
 // Use rangeOfNumbers and amountOfNumbers to determine how many numbers and range of numbers
 //     To enter into the arrayRandomNumbers
 // Compare arrayRandomNumbers to arrayUserValues
-//      Bubble sort and Liner sort
+//      Bubble search and Linear search
