@@ -176,6 +176,7 @@ Please enter a single number. (This is the range of numbers you would like on yo
         }
     }
 }
+
 // Debug: Break point for checking userValuesArray & screenshot
 //Console.WriteLine();
 // Debug: Have user values been added to the userValuesArray array?
@@ -197,25 +198,90 @@ for (int number = 0; number < randomValuesArray.Length; number++)
 //Console.WriteLine($"\n\nDebug Random Array: \n\n{string.Join("\n\n", randomValuesArray)}", "\n");
 
 // Compare randomValuesArray to arrayUserValues
-//      Binary search and Linear search
-int LinearLotterySearch(int[] arrayBeingSearched, int valueBeingFound)
+bool linearSearch = false;
+
+// Bubble sort
+int[] BubbleSort(int[] arrayBeingSorted)
 {
-    for (int i = 0; i < arrayBeingSearched.Length; ++i)
+    for (int i = 0; i < arrayBeingSorted.Length; ++i)
     {
-        if (arrayBeingSearched[i] == valueBeingFound)
+        int sortedAlready = 0;
+        for (int j = 0; j < arrayBeingSorted.Length - 1 - i; ++j)
         {
-            return i;
+            if (arrayBeingSorted[j] > arrayBeingSorted[j + 1])
+            {
+                int temp = arrayBeingSorted[j + 1];
+                arrayBeingSorted[j + 1] = arrayBeingSorted[j];
+                arrayBeingSorted[j] = temp;
+                sortedAlready = 1;
+            }
+        }
+        if (sortedAlready == 0)
+            break;
+    }
+    return arrayBeingSorted;
+}
+
+randomValuesArray = BubbleSort(randomValuesArray);
+
+// Binary search
+int BinaryLotterySearch(int[] arrayBeingSearched, int valueToFind)
+{
+    int minIndex = 0;
+    int maxIndex = arrayBeingSearched.Length - 1;
+    while (minIndex <= maxIndex)
+    {
+        int midPoint = (maxIndex + minIndex) / 2;
+        if (arrayBeingSearched[midPoint] == valueToFind)
+        {
+            return midPoint;
+        }
+        if (valueToFind > arrayBeingSearched[midPoint])
+        {
+            minIndex = midPoint + 1;
+        }
+        else
+        {
+            maxIndex = midPoint - 1;
         }
     }
     return -1;
 }
 
-// Call the Linear search on the randomValuesArray
-//      Checking over each element from userValuesArray to see if the element is an element in randomValuesArray
 bool userWon = true;
+
+if (linearSearch == true)
+{
+    // Linear search
+    int LinearLotterySearch(int[] arrayBeingSearched, int valueBeingFound)
+    {
+        for (int i = 0; i < arrayBeingSearched.Length; ++i)
+        {
+            if (arrayBeingSearched[i] == valueBeingFound)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Call the Linear search on the randomValuesArray
+    //      Checking over each element from userValuesArray to see if the element is an element in randomValuesArray
+
+    foreach (int element in userValuesArray)
+    {
+        if (LinearLotterySearch(randomValuesArray, element) == -1)
+        {
+            userWon = false;
+        }
+        // Debug: Is it iterating over the array?
+        //Console.WriteLine("Yes");
+    }
+}
+
 foreach (int element in userValuesArray)
 {
-    if (LinearLotterySearch(randomValuesArray, element) == -1)
+    if (BinaryLotterySearch(randomValuesArray, element) == -1)
     {
         userWon = false;
     }
@@ -223,7 +289,7 @@ foreach (int element in userValuesArray)
     //Console.WriteLine("Yes");
 }
 
-Console.WriteLine(@"
+    Console.WriteLine(@"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ");
@@ -235,7 +301,7 @@ if (userWon)
     Console.WriteLine(@"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    Console.WriteLine("You won!");
+    Console.WriteLine("\nYou won!");
 }
 else
 {
