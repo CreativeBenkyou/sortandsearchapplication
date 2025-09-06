@@ -32,6 +32,7 @@ while (amountOfNumbersBool == true)
 Please input how many numbers you would like on your lottery ticket?
 ");
     string amountOfNumbersString = Console.ReadLine();
+    // Conversion from string to int: amountOfNumbers
     if (int.TryParse(amountOfNumbersString, out int amountOfNumbersInt))
     {
         amountOfNumbers = amountOfNumbersInt;
@@ -68,6 +69,7 @@ while (rangeOfNumbersBool == true)
 Please input the range of numbers you would like on your lottery ticket:
 ");
     string rangeOfNumbersString = Console.ReadLine();
+    // Conversion from string to int: rangeOfNumbers
     if (int.TryParse(rangeOfNumbersString, out int rangeOfNumbersInt))
     {
         rangeOfNumbers = rangeOfNumbersInt;
@@ -86,7 +88,7 @@ Please enter a number between 1 and 100 ");
             rangeOfNumbersBool = false;
         }
         // Debug: Is the number being recorded?
-        // Console.WriteLine(rangeOfNumbers);
+        // Console.WriteLine($"Debug: {rangeOfNumbers}");
     }
     else
     {
@@ -102,16 +104,15 @@ Console.WriteLine($@"
     Have fun!
     ");
 
-// Write a function for taking the inputs amountOfNumbers and rangeOfNumbers
-// Checking whether it is not 0, whether it is under 100, if it is not a char/string (giving each case a custom feedback and not generic "Use only numbers")
-// (Otherwise the game will never end if you can choose more than 100 numbers, in the range of more than 100 numbers)
-
-// Take input for userValuesArray (user inputs numbers to compare to random numbers in randomArray)
+// Take input for userValuesArray (user inputs numbers to compare to random numbers in randomValuesArray)
 int[] userValuesArray = new int[amountOfNumbers];
+// Make sure length of arrayUserValues is the same as amountOfNumbers
+// Make sure range of numbers of arrayUserValues is the same as rangeOfNumbers
+// Conversion from string to int: amountOfNumbers, rangeOfNumbers, userValues
 for (int number = 0; number < userValuesArray.Length; number++)
 {
     // Debug: is each number getting iterated over in userValuesArray?
-    Console.WriteLine($"Debug: Number {userValuesArray[number]}");
+    // Console.WriteLine($"Debug: Number {userValuesArray[number]}");
 
 
     bool userValuesArrayBool = true;
@@ -150,13 +151,23 @@ Please enter a number. (This is the range of numbers you would like on your lott
     }
 }
 
-// Make sure length of arrayUserValues is the same as amountOfNumbers
-// Make sure range of numbers of arrayUserValues is the same as rangeOfNumbers
-// Conversion from input userValues to arrayUserValues
-// Conversion from string to int: amountOfNumbers, rangeOfNumbers, userValues
+// Debug: Have user values been added to the userValuesArray array?
+Console.WriteLine($"\n\nDebug User Array: \n\n{string.Join("\n\n", userValuesArray)}", "\n");
+
 // Import random
-// Create array for arrayRandomNumbers
+Random randomLotteryValues = new Random();
+
+// Create array for randomValuesArray
+int[] randomValuesArray = new int[amountOfNumbers];
+for (int number = 0; number < randomValuesArray.Length; number++)
+{
+    randomValuesArray[number] = randomLotteryValues.Next(1, rangeOfNumbers);
+}
+
+// Debug: Have random values been added to the randomValuesArray array?
+Console.WriteLine($"\n\nDebug Random Array: \n\n{string.Join("\n\n", randomValuesArray)}", "\n");
+
 // Use rangeOfNumbers and amountOfNumbers to determine how many numbers and range of numbers
-//     To enter into the arrayRandomNumbers
-// Compare arrayRandomNumbers to arrayUserValues
+//     To enter into the randomValuesArray
+// Compare randomValuesArray to arrayUserValues
 //      Bubble search and Linear search
